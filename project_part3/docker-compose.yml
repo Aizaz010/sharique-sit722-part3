@@ -1,0 +1,26 @@
+# Your Solution
+
+version: '3.8'
+
+services:
+  book_catalog:
+    image: sharique.azurecr.io/book_catalog:latest
+    build: 
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    ports:
+      - "4000:8000"
+    environment:
+      - PORT=8000
+      - DATABASE_URL=postgresql://sharique_3hhb_user:x58ED0BppJSqx4JJa29pOaVxlSGKuXmp@dpg-cren243gbbvc73bs8ofg-a.oregon-postgres.render.com/sharique_3hhb
+
+  inventory_management:
+    image: sharique.azurecr.io/inventory_management:latest
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    ports:
+      - "4001:8001"
+    environment:
+      - PORT=8001
+      - DATABASE_URL=postgresql://sharique_3hhb_user:x58ED0BppJSqx4JJa29pOaVxlSGKuXmp@dpg-cren243gbbvc73bs8ofg-a.oregon-postgres.render.com/sharique_3hhb
